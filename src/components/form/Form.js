@@ -70,8 +70,9 @@ function Form(props){
 
         return(
             <div className='form-div'>
-                <div className='form'>
                 {isValid && <ErrorModal title={isValid.title} message ={isValid.message}  onConfirm={errorHandler}></ErrorModal>}
+                <div className='form'>
+                
                 {/* {isValid && alert("hello")} */}
                 <form className= "inner-form" onSubmit={submitHandler}>
                 <label>NAME</label>
