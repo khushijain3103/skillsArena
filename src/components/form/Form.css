@@ -1,4 +1,13 @@
 
+.form-div {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+
 .form{
     width: 450px;
     background-color: aliceblue;
@@ -26,7 +35,6 @@
 }
 
 .add-course{
-   
     background-color: aqua;
     text-align: end;
 }

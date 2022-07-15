@@ -1,9 +1,10 @@
 import React from "react";
+import './ErrorModal.css';
 
 function ErrorModal(props){
     return(
 
-        <div>
+        <div className='error-div'>
             <header>
                 <h2>{props.title}</h2>
             </header>
