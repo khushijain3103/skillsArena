@@ -5,16 +5,22 @@ import ErrorModal from '../UI/errorModal/ErrorModal';
 
 function Form(props){
 
-    const[enteredName , setenteredName] = useState('');
+    const[enteredCourseID , setenteredCourseID] = useState('');
 
-    const nameChangeHandler = (event)=>{
-        setenteredName(event.target.value);
+    const CourseIDChangeHandler = (event)=>{
+        setenteredCourseID(event.target.value);
     }
 
-    const[enteredAge , setenteredAge] = useState('');
+    const[enteredCourse , setenteredCourse] = useState('');
 
-    const ageChangeHandler = (event)=>{
-        setenteredAge(event.target.value);
+    const courseChangeHandler = (event)=>{
+        setenteredCourse(event.target.value);
+    }
+
+    const[enteredURL , setenteredURL] = useState('');
+
+    const URLChangeHandler = (event)=>{
+        setenteredURL(event.target.value);
     }
 
 
@@ -27,7 +33,7 @@ function Form(props){
     const submitHandler = (event)=>{
         event.preventDefault();
 
-        if(enteredName.trim().length === 0 || enteredAge.trim().length === 0)
+        if(enteredCourseID.trim().length === 0 || enteredCourse.trim().length === 0)
         {
             setisValid({
                 title: "Invalid Input",
@@ -36,22 +42,15 @@ function Form(props){
             return;
         }
 
-        if(enteredAge<1)
-        {
-            setisValid({
-                title: "Invalid Input",
-                message : "Please enter valid age (>0)"
-            });
-            return;
-        }
-        
 
         const submitObject = {
-            Name: enteredName ,
-            Age: enteredAge
+            CourseID: enteredCourseID ,
+            course: enteredCourse,
+            URL:enteredURL
         }
 
             props.onSubmitting(submitObject);
+            console.log(submitObject);
         }
 
         const errorHandler = ()=>{
@@ -63,6 +62,9 @@ function Form(props){
         const openStateHandler = ()=>{
             setopenState(true);
         };
+        const closeStateHandler=()=>{
+            setopenState(false);
+        };
 
 
     if(openState==true)
@@ -73,12 +75,17 @@ function Form(props){
             <div className='form'>
                 {isValid && <ErrorModal title={isValid.title} message ={isValid.message}  onConfirm={errorHandler}></ErrorModal>}
                 {/* {isValid && alert("hello")} */}
+
+                <button className='cross' onClick={closeStateHandler}>X</button>
                 <form className= "inner-form" onSubmit={submitHandler}>
-                <label>NAME</label>
-                <input type = "text"  value={enteredName} onChange={nameChangeHandler}></input>
+                <label>CourseID</label>
+                <input type = "text"  value={enteredCourseID} onChange={CourseIDChangeHandler}></input>
     
-                <label>AGE(YEARS)</label>
-                <input type = "text" value={enteredAge}  onChange={ageChangeHandler}></input>
+                <label>Course</label>
+                <input type = "text" value={enteredCourse}  onChange={courseChangeHandler}></input>
+
+                <label>Course URL</label>
+                <input type = "text" value={enteredURL}  onChange={URLChangeHandler}></input>
     
                 <button>ADD</button>
     

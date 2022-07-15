@@ -9,16 +9,18 @@ function List(props){
     return(
 
         <div className='table-parent'>
-            <table  className='table'>
+            <table cellSpacing={0} border={1}>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
+                <th>CourseID</th>
+                <th>Course</th>
+                <th>Course URL</th>
             </tr>
             {props.list.map((item )=>(
 
                 <tr  key={item.id}>
-                    <td className="Name">{item.Name}</td>
-                    <td className="Age">{item.Age}</td>
+                    <td className="Name">{item.CourseID}</td>
+                    <td className="Age">{item.course}</td>
+                    <td>{item.URL}</td>
 
                 </tr>
             )

@@ -8,14 +8,14 @@ function App() {
 
   const dummyData = [
     {
-      id: "p1",
-      Name:"khushi",
-      Age:19
+      CourseID: '1' ,
+      course: 'c++',
+      URL:'abc.com'
     } ,
     {
-      id:"p2",
-      Name:"khushi",
-      Age:19
+      CourseID: '1' ,
+      course: 'c++',
+      URL:'abc.com'
     },
   ];
 

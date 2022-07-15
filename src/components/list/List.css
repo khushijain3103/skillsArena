@@ -1,12 +1,24 @@
-.table{
-    border: solid 1px ;
-    width: 100%;
-}
-
 .table-parent{
     height: 100%;
     width: 100%;
     display: flex;
     /* justify-content: center; */
     align-items: center;
+    
+}
+
+.table-parent table{
+    border: 1px solid;
+    width: 100%;
+    /* box-shadow: 0 2px 8px black; */
+    
+    /* border-collapse: collapse; */
+}
+
+.table-parent th,tr,td{
+    border: 1px solid;
+}
+
+.table-parent tr:nth-child(even){
+    background-color:aliceblue;
 }
