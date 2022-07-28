@@ -1,0 +1,22 @@
+.top-bar{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+
+}
+
+.avatar{
+    margin-top:  0.8rem;
+    width: 40px;
+    height: 40px;
+}
+
+.heading{
+    color: #4C4C4C;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+

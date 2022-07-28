@@ -1,0 +1,30 @@
+.table-parent{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.table-parent table{
+    border: 1px solid;
+    width: 741px;
+    height: 40px;
+    left: 488px;
+    top: 252px;
+    background-color:  #F2F2F2;
+    border-radius: 4px 4px 0px 0px;
+    /* box-shadow: 0 2px 8px black; */
+    
+    /* border-collapse: collapse; */
+}
+
+.table-parent th,tr,td{
+    border: 1px solid;
+}
+
+.table-parent tr:nth-child(even){
+    background-color:#FCFCFC;
+}

@@ -1,0 +1,17 @@
+{
+  "title": "c++",
+  "URL": "abc.com",
+  "stars": "5",
+  "cost": "100",
+  "instructor": "abc",
+  "description": "abcabcabcabc",
+  "videos": [
+    {
+      "_id": "1",
+      "URL": "abc.com",
+      "format": "abc",
+      "amount": "100",
+      "updatedAt": "2020-01-01"
+    }
+  ]
+}

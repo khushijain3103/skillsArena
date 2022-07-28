@@ -1,0 +1,10 @@
+.card{
+    background-color: aliceblue;
+    box-shadow: 0 2px 8px black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+}
+
