@@ -38,7 +38,7 @@ export const getUser = async () => {
 export const addCourse = async ({
   title,
   description,
-  url:urlParam,
+  url: urlParam,
   stars,
   cost,
   instructor,
@@ -49,17 +49,19 @@ export const addCourse = async ({
       "Content-Type": "application/json",
       "x-access-token": localStorage.getItem("token"),
     },
-    body: JSON.stringify({ title, description, url:urlParam, stars, cost, instructor }),
+    body: JSON.stringify({
+      title,
+      description,
+      url: urlParam,
+      stars,
+      cost,
+      instructor,
+    }),
   });
   const data = await response.json();
   return data;
 };
-export const addVideo= async ({
-  title,
-  URL,
-  format,
-  courseId,
-}) => {
+export const addVideo = async ({ title, URL, format, courseId }) => {
   const response = await fetch(`${url}/add-video`, {
     method: "POST",
     headers: {
@@ -70,7 +72,7 @@ export const addVideo= async ({
   });
   const data = await response.json();
   return data;
-}
+};
 
 export const getCourses = async () => {
   const response = await fetch(`${url}/read-courses`, {
@@ -157,7 +159,7 @@ export const updateCourse = async ({
     }),
   });
   const data = await response.json();
- 
+
   return data;
 };
 
@@ -175,44 +177,9 @@ export const deleteVideo = async ({ courseId, videoId }) => {
   return data;
 };
 
-export const addInstructor = async ({
-  FirstName , 
-  LastName , 
-  email ,
-  Bio
-}) => {
-  const response = await fetch(`${url}/create-instructor`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-access-token": localStorage.getItem("token"),
-    },
-    body: JSON.stringify({ firstName: FirstName, lastName:LastName, email: email, bio:Bio }),
-  });
-  const data = await response.json();
-  return data;
-};
 
-export const updateInstructor = async ({
-  FirstName , 
-  LastName , 
-  email ,
-  Bio
-}) => {
-  const response = await fetch(`${url}/update-instructor/:id`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-access-token": localStorage.getItem("token"),
-    },
-    body: JSON.stringify({ firstName: FirstName, lastName:LastName, email: email, bio:Bio }),
-  });
-  const data = await response.json();
-  return data;
-};
-
-export const deleteInstructor = async ({ id }) => {
-  const response = await fetch(`${url}/delete-instructor/:id`, {
+export const getInstructors = async () => {
+  const response = await fetch(`${url}/read-all-instructors`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -221,6 +188,61 @@ export const deleteInstructor = async ({ id }) => {
   });
   const data = await response.json();
   return data;
+}
+
+
+
+export const addInstructor = async ({ FirstName, LastName, email, Bio }) => {
+  const response = await fetch(`${url}/create-instructor`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-access-token": localStorage.getItem("token"),
+    },
+    body: JSON.stringify({
+      firstName: FirstName,
+      lastName: LastName,
+      email: email,
+      bio: Bio,
+    }),
+  });
+  const data = await response.json();
+  return data;
 };
 
+export const updateInstructor = async ({
+  FirstName,
+  LastName,
+  email,
+  Bio,
+  _id: id,
+}) => {
+  const response = await fetch(`${url}/update-instructor/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-access-token": localStorage.getItem("token"),
+    },
+    body: JSON.stringify({
+      firstName: FirstName,
+      lastName: LastName,
+      email: email,
+      id,
+      bio: Bio,
+    }),
+  });
+  const data = await response.json();
+  return data;
+};
 
+export const deleteInstructor = async ({ id }) => {
+  const response = await fetch(`${url}/delete-instructor/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-access-token": localStorage.getItem("token"),
+    },
+  });
+  const data = await response.json();
+  return data;
+};

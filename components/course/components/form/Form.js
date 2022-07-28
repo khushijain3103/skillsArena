@@ -1,18 +1,18 @@
-import { useState } from "react"; 
-import { Button, TextField, Modal, Box } from "@mui/material";
-import  FormModal  from "../../../../@sections/form.add";
-import {addCourse} from '../../../../api/index';
-import {useSnackbar} from 'notistack';
+import { useState } from "react";
+import { Button, Box } from "@mui/material";
+import FormModal from "../../@sections/form.add";
+import { addCourse } from "../../../../api/index";
+import { useSnackbar } from "notistack";
 function Form(props) {
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [isValid, setisValid] = useState();
   const data = {
-    title:'',
-    description:'',
-    url:'',
-    stars:'',
-    cost:'',
-    instructor:'',
+    title: "",
+    description: "",
+    url: "",
+    stars: "",
+    cost: "",
+    instructor: "",
   };
   const handleAddcourse = async ({
     title,
@@ -22,23 +22,21 @@ function Form(props) {
     cost,
     instructor,
   }) => {
- const data= await addCourse({
-   title,
-   description,
-   url,
-   stars,
-   cost,
-   instructor,
- });
- if(data.error)
- {
-  enqueueSnackbar(data.error,{variant:'error'});
- }
- else{
-  enqueueSnackbar("Course added ",{variant:'success'});
-  props.onSubmitting(data.data);
- setopenState(false);
- }
+    const data = await addCourse({
+      title,
+      description,
+      url,
+      stars,
+      cost,
+      instructor,
+    });
+    if (data.error) {
+      enqueueSnackbar(data.error, { variant: "error" });
+    } else {
+      enqueueSnackbar("Course added ", { variant: "success" });
+      props.onSubmitting(data.data);
+      setopenState(false);
+    }
   };
 
   const errorHandler = () => {
@@ -49,7 +47,7 @@ function Form(props) {
   const openStateHandler = () => {
     setopenState(true);
   };
-   
+
   return (
     <Box
       sx={{

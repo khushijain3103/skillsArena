@@ -1,6 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
@@ -9,15 +7,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { AiOutlineDelete, AiFillEdit } from "react-icons/ai";
 import { styled } from "@mui/material";
-import InstructorModal from "../@sections/instructor.modal.edit";
+import CourseModal from "./course.modal.edit";
 import handlerContext from "../../../context/handler.context";
 
+import Videos from "./videos";
 const StyledTableCell = styled(TableCell)({
   color: "white",
   fontSize: "1rem",
@@ -28,9 +26,8 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
-  const { data, handleDelete, handleUpdate } = React.useContext(handlerContext);
-
-  const [InstructorModalBool, setInstructorModalBool] = React.useState(false);
+  const { handleDelete } = React.useContext(handlerContext);
+  const [CourseModalBool, setCourseModalBool] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -45,21 +42,21 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell align="center">{row._id}</TableCell>
-        {/* <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row">
           {row.title}
-        </TableCell> */}
-
-        <TableCell align="center">{row.firstName}</TableCell>
-        <TableCell align="center">{row.lastName}</TableCell>
-        <TableCell align="center">{row.email}</TableCell>
-        <TableCell align="center">{row.bio}</TableCell>
+        </TableCell>
+        <TableCell align="center">{row.url}</TableCell>
+        <TableCell align="center">{row.stars}</TableCell>
+        <TableCell align="center">{row.cost}</TableCell>
+        <TableCell align="center">{row.instructor}</TableCell>
+        <TableCell align="center">{row.videos.length}</TableCell>
         <TableCell align="center">
-          <AiFillEdit size={24} onClick={() => setInstructorModalBool(true)} />
-          <InstructorModal
-            open={InstructorModalBool}
+          <AiFillEdit size={24} onClick={() => setCourseModalBool(true)} />
+          <CourseModal
+            open={CourseModalBool}
             row={row}
-            setOpen={setInstructorModalBool}
-            instructorId={row._id}
+            setOpen={setCourseModalBool}
+            courseId={row._id}
           />
         </TableCell>
         <TableCell align="center">
@@ -72,13 +69,24 @@ function Row(props) {
         </TableCell>
       </TableRow>
       <TableRow>
-        
+        <TableCell style={{ paddingBottom: 4, paddingTop: 4 }} colSpan={12}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Videos row={row} />
+          </Collapse>
+        </TableCell>
       </TableRow>
     </React.Fragment>
   );
 }
 
-export default function CollapsibleTable({ data, handleDelete, handleUpdate }) {
+export default function CollapsibleTable({
+  data,
+  handleDelete,
+  handleUpdate,
+  handleUpdateVideo,
+  handleDeleteVideo,
+  handleAddVideo,
+}) {
   // create context
 
   return (
@@ -87,6 +95,9 @@ export default function CollapsibleTable({ data, handleDelete, handleUpdate }) {
         data,
         handleDelete,
         handleUpdate,
+        handleUpdateVideo,
+        handleDeleteVideo,
+        handleAddVideo,
       }}
     >
       <TableContainer component={Paper}>
@@ -95,10 +106,12 @@ export default function CollapsibleTable({ data, handleDelete, handleUpdate }) {
             <TableRow sx={{ backgroundColor: "black" }}>
               <TableCell />
               <StyledTableCell>Id</StyledTableCell>
-              <StyledTableCell align="right">firstName</StyledTableCell>
-              <StyledTableCell align="right">lastname</StyledTableCell>
-              <StyledTableCell align="right">e-mail</StyledTableCell>
-              <StyledTableCell align="right">bio</StyledTableCell>
+              <StyledTableCell align="right">Title</StyledTableCell>
+              <StyledTableCell align="right">url</StyledTableCell>
+              <StyledTableCell align="right">stars</StyledTableCell>
+              <StyledTableCell align="right">cost</StyledTableCell>
+              <StyledTableCell align="right">Instructor</StyledTableCell>
+              <StyledTableCell align="right">Videos</StyledTableCell>
               <StyledTableCell align="right">Edit</StyledTableCell>
               <StyledTableCell align="right">Delete</StyledTableCell>
             </TableRow>

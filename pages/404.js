@@ -4,7 +4,7 @@ import { Container } from "@mui/system";
 
 const ErrorPage = () => {
   return (
-    <Container className="fullSize center" >
+    <Container className="fullSize center">
       <Image src={ErrorImage} alt="404" />
     </Container>
   );

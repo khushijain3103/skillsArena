@@ -2,10 +2,8 @@ import Form from "./form";
 
 function NewList(props) {
   const formSubmitHandler = (enteredData) => {
-
-
     const submitData = {
-      ...enteredData, 
+      ...enteredData,
     };
     props.onAdding(submitData);
   };

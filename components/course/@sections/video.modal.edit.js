@@ -3,8 +3,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
 import HandlerContext from "../../../context/handler.context";
+import { TextField } from "@mui/material";
+import { AiFillEdit } from "react-icons/ai";
 const style = {
   position: "absolute",
   top: "50%",
@@ -19,33 +20,31 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ open, row, instructorId, setOpen }) {
- 
- 
+export default function BasicModal({ open, videoRow, courseId, setOpen }) {
+  const { handleUpdateVideo } = React.useContext(HandlerContext);
   const handleClose = () => setOpen(false);
-  const { handleUpdate } = React.useContext(HandlerContext);
   const [obj, setObj] = React.useState({
-    FirstName: row.firstName,
-    LastName: row.lastName,
-    email: row.email,
-    Bio: row.bio,
+    videoId: videoRow._id,
+    courseId: courseId,
+    title: videoRow.title,
+    URL: videoRow.URL,
+    format: videoRow.format,
   });
-  const keys = Object.keys(obj); 
   const handleChange = (e) => {
     setObj({
       ...obj,
       [e.target.name]: e.target.value,
     });
   };
-
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <AiFillEdit
+        size={24}
+        onClick={() => {
+          setOpen(true);
+        }}
+      />
+      <Modal open={open} onClose={handleClose} id="update-video-modal">
         <Box sx={style}>
           <Typography
             id="modal-modal-title"
@@ -53,35 +52,42 @@ export default function BasicModal({ open, row, instructorId, setOpen }) {
             component="h2"
             textAlign={"center"}
           >
-            Edit your Course parameters
+            Edit your video parameters
           </Typography>
-          <Typography
-            textAlign="center"
-            variant="subtitle2"
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-          >
+          <Typography textAlign="center" variant="subtitle2" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-          {keys.map((item, key) => (
-            <TextField
-              key={key}
-              fullWidth
-              value={obj[item]}
-              onChange={handleChange}
-              name={item}
-              label={item.toUpperCase()}
-              sx={{ mb: 3 }}
-            />
-          ))}
-
+          <TextField
+            fullWidth
+            value={obj.title}
+            onChange={handleChange}
+            name="title"
+            label="Title"
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            fullWidth
+            value={obj.format}
+            onChange={handleChange}
+            name="format"
+            label="Format"
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            fullWidth
+            value={obj.URL}
+            onChange={handleChange}
+            name="URL"
+            label="URL"
+            sx={{ mb: 3 }}
+          />
           <Button
             fullWidth
             variant="contained"
             color="primary"
             sx={{ mb: 3 }}
             onClick={() => {
-              handleUpdate({ ...obj, _id: instructorId });
+              handleUpdateVideo(obj);
               handleClose();
             }}
           >

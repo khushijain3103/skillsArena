@@ -18,9 +18,9 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LockIcon from "@mui/icons-material/Lock";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import logo from "../../../../public/assets/logo.png";
-import {register} from "../../../../api";
-import {useRouter} from 'next/router'
-import {  useSnackbar } from "notistack";
+import { register } from "../../../../api";
+import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 function Copyright(props) {
   return (
     <Typography
@@ -42,8 +42,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,13 +58,10 @@ export default function SignInSide() {
       password: data.get("password"),
       name: data.get("name"),
     });
-    if(ldata.error===null){
-      localStorage.setItem("token",ldata.data.token);
+    if (ldata.error === null) {
+      localStorage.setItem("token", ldata.data.token);
       router.push("/course");
-
-    }
-    else
-    {
+    } else {
       enqueueSnackbar(ldata.error, {
         variant: "error",
         autoHideDuration: 2000,

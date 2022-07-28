@@ -8,7 +8,7 @@ function NewList(props) {
     // }
 
     const submitData = {
-      ...enteredData, 
+      ...enteredData,
     };
 
     // console.log(submitData);

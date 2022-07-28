@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import HandlerContext from "../../../context/handler.context";
 import { TextField } from "@mui/material";
 const style = {
   position: "absolute",
@@ -18,32 +19,25 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
+export default function BasicModal({ open, courseId, setOpen }) {
+  const { handleAddVideo } = React.useContext(HandlerContext);
   const handleClose = () => setOpen(false);
-  const { FirstName, LastName, email, Bio } = data;
+
   const [obj, setObj] = React.useState({
-    FirstName,
-    LastName,
-    email,
-    Bio,
+    courseId: courseId,
+    title: "",
+    URL: "",
+    format: "",
   });
-  const keys = Object.keys(obj);
-  console.log(obj);
   const handleChange = (e) => {
     setObj({
       ...obj,
       [e.target.name]: e.target.value,
     });
   };
-
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <Modal open={open} onClose={handleClose} id="new-video-modal">
         <Box sx={style}>
           <Typography
             id="modal-modal-title"
@@ -51,7 +45,7 @@ export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
             component="h2"
             textAlign={"center"}
           >
-            Edit your Course parameters
+            Edit your video parameters
           </Typography>
           <Typography
             textAlign="center"
@@ -61,28 +55,41 @@ export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
           >
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-          {keys.map((item, key) => (
-            <TextField
-              key={key}
-              fullWidth
-              value={obj[item]}
-              onChange={handleChange}
-              name={item}
-              label={item.toUpperCase()}
-              sx={{ mb: 3 }}
-            />
-          ))}
-
+          <TextField
+            fullWidth
+            value={obj.title}
+            onChange={handleChange}
+            name="title"
+            label="Title"
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            fullWidth
+            value={obj.format}
+            onChange={handleChange}
+            name="format"
+            label="Format"
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            fullWidth
+            value={obj.URL}
+            onChange={handleChange}
+            name="URL"
+            label="URL"
+            sx={{ mb: 3 }}
+          />
           <Button
             fullWidth
             variant="contained"
             color="primary"
             sx={{ mb: 3 }}
             onClick={() => {
-              handleAddcourse(obj);
+              handleAddVideo({ courseId, video: obj });
+              handleClose();
             }}
           >
-            Save the edit
+            Save the Video
           </Button>
         </Box>
       </Modal>
