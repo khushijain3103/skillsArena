@@ -14,7 +14,8 @@ import { AiOutlineDelete, AiFillEdit } from "react-icons/ai";
 import { styled } from "@mui/material";
 import CourseModal from "./course.modal.edit";
 import handlerContext from "../../../context/handler.context";
-
+import { GoSettings } from "react-icons/go";
+import { useRouter } from "next/router";
 import Videos from "./videos";
 const StyledTableCell = styled(TableCell)({
   color: "white",
@@ -28,7 +29,7 @@ function Row(props) {
 
   const { handleDelete } = React.useContext(handlerContext);
   const [CourseModalBool, setCourseModalBool] = React.useState(false);
-
+  const router = useRouter();
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -67,7 +68,16 @@ function Row(props) {
             }}
           />
         </TableCell>
+        <TableCell align="center">
+          <GoSettings
+            size={24}
+            onClick={() => {
+              router.push(`/settings`);
+            }}
+          />
+        </TableCell>
       </TableRow>
+
       <TableRow>
         <TableCell style={{ paddingBottom: 4, paddingTop: 4 }} colSpan={12}>
           <Collapse in={open} timeout="auto" unmountOnExit>
@@ -114,6 +124,7 @@ export default function CollapsibleTable({
               <StyledTableCell align="right">Videos</StyledTableCell>
               <StyledTableCell align="right">Edit</StyledTableCell>
               <StyledTableCell align="right">Delete</StyledTableCell>
+              <StyledTableCell align="right">Settings</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
