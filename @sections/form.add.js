@@ -61,7 +61,6 @@ export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
             id="modal-modal-description"
             sx={{ mt: 2 }}
           >
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
           {keys.map((item, key) => (
             <TextField

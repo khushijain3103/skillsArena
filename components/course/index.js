@@ -52,6 +52,7 @@ function App() {
           data={enteredNewData}
           handleDelete={handleDeleteCourse}
           handleUpdate={handleUpdateCourse}
+          abc ={true}
         />
       </Box>
     </Container>

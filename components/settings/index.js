@@ -7,6 +7,7 @@ function Settings()
     return(
         <>
             <SideBar/>
+            <FormPropsTextFields/>
         </>
 
     )

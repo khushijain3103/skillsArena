@@ -51,16 +51,19 @@ function Row(props) {
         <TableCell align="center">{row.stars}</TableCell>
         <TableCell align="center">{row.cost}</TableCell>
         <TableCell align="center">{row.instructor}</TableCell>
+
+       {abc &&<>
         <TableCell align="center">{row.videos.length}</TableCell>
-        <TableCell align="center">
-          <AiFillEdit size={24} onClick={() => setCourseModalBool(true)} />
-          <CourseModal
-            open={CourseModalBool}
-            row={row}
-            setOpen={setCourseModalBool}
-            courseId={row._id}
-          />
-        </TableCell>
+          <TableCell align="center">
+            <AiFillEdit size={24} onClick={() => setCourseModalBool(true)} />
+            <CourseModal
+              open={CourseModalBool}
+              row={row}
+              setOpen={setCourseModalBool}
+              courseId={row._id}
+            />
+          </TableCell>
+        </>}
         <TableCell align="center">
           <AiOutlineDelete
             size={24}
