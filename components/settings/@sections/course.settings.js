@@ -8,7 +8,7 @@ const Settings = () => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0]; // 0th index file is the image
     /*
-    upload to cloudinary
+     upload to cloudinary
 
     */
     const reader = new FileReader();
