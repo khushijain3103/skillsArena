@@ -71,9 +71,7 @@ function Row(props) {
           />
         </TableCell>
       </TableRow>
-      <TableRow>
-        
-      </TableRow>
+      <TableRow></TableRow>
     </React.Fragment>
   );
 }

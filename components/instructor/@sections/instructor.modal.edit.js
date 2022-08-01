@@ -20,8 +20,6 @@ const style = {
 };
 
 export default function BasicModal({ open, row, instructorId, setOpen }) {
- 
- 
   const handleClose = () => setOpen(false);
   const { handleUpdate } = React.useContext(HandlerContext);
   const [obj, setObj] = React.useState({
@@ -30,7 +28,7 @@ export default function BasicModal({ open, row, instructorId, setOpen }) {
     email: row.email,
     Bio: row.bio,
   });
-  const keys = Object.keys(obj); 
+  const keys = Object.keys(obj);
   const handleChange = (e) => {
     setObj({
       ...obj,

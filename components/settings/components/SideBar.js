@@ -10,7 +10,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
     left: false,
@@ -59,7 +59,9 @@ export default function TemporaryDrawer() {
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>
+            <AiOutlineMenuUnfold size={25} color="black" />
+          </Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

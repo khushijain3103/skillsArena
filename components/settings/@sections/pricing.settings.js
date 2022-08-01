@@ -8,7 +8,7 @@ import { FaLock } from "react-icons/fa";
 const Settings = () => {
   return (
     <React.Fragment>
-      <Grid container columns={12} spacing={3} rowSpacing={2    }>
+      <Grid container columns={12} spacing={3} rowSpacing={2}>
         <Grid item lg={10}>
           <Typography variant="h4">Pricing Settings</Typography>
           <Typography variant="body1" sx={{ mt: 3 }}>

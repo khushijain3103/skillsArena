@@ -9,7 +9,7 @@ import {
   getInstructors,
 } from "../../api/index";
 import React from "react";
-import {useSnackbar} from "notistack";
+import { useSnackbar } from "notistack";
 
 function Instructor() {
   const [enteredNewData, setenteredNewData] = useState([]);
@@ -18,7 +18,7 @@ function Instructor() {
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await getInstructors();
-      setenteredNewData(response.data||[]);
+      setenteredNewData(response.data || []);
     };
     fetchData();
   }, []);
@@ -29,7 +29,6 @@ function Instructor() {
     enqueueSnackbar("Instructor deleted successfully", {
       variant: "success",
     });
-
   };
   const handleUpdateInstructor = async (instructor) => {
     const data = await updateInstructor(instructor);

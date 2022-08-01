@@ -1,8 +1,7 @@
 {
-        "endOfLine": "lf",
-        "insertSpaces": true,
-        "tabSize": 4,
-        "indentSize": 4,
-        "trimTrailingWhitespace": true
-        
+  "endOfLine": "lf",
+  "insertSpaces": true,
+  "tabSize": 4,
+  "indentSize": 4,
+  "trimTrailingWhitespace": true
 }

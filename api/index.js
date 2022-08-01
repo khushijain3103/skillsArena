@@ -177,7 +177,6 @@ export const deleteVideo = async ({ courseId, videoId }) => {
   return data;
 };
 
-
 export const getInstructors = async () => {
   const response = await fetch(`${url}/read-all-instructors`, {
     method: "GET",
@@ -188,9 +187,7 @@ export const getInstructors = async () => {
   });
   const data = await response.json();
   return data;
-}
-
-
+};
 
 export const addInstructor = async ({ FirstName, LastName, email, Bio }) => {
   const response = await fetch(`${url}/create-instructor`, {

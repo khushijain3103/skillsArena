@@ -17,9 +17,9 @@ const StyledTableCell = styled(TableCell)({
   textAlign: "center",
 });
 const VideoTable = ({ row, video }) => {
-   const { handleDeleteVideo } = React.useContext(handlerContext);
- 
-   const [VideoModalBool, setVideoModalBool] = React.useState(false);
+  const { handleDeleteVideo } = React.useContext(handlerContext);
+
+  const [VideoModalBool, setVideoModalBool] = React.useState(false);
 
   return (
     <TableRow key={video._id}>
@@ -51,8 +51,8 @@ const VideoTable = ({ row, video }) => {
     </TableRow>
   );
 };
-const Videos = ({ row }) => { 
-  const [AddVideoModalBool, setAddVideoModalBool] = React.useState(false); 
+const Videos = ({ row }) => {
+  const [AddVideoModalBool, setAddVideoModalBool] = React.useState(false);
 
   return (
     <Box sx={{ margin: 1 }}>

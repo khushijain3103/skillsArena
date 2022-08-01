@@ -26,11 +26,9 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
-  const {
-    handleDelete,
-  } = React.useContext(handlerContext);
+  const { handleDelete } = React.useContext(handlerContext);
   const [CourseModalBool, setCourseModalBool] = React.useState(false);
-  
+
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -73,7 +71,7 @@ function Row(props) {
       <TableRow>
         <TableCell style={{ paddingBottom: 4, paddingTop: 4 }} colSpan={12}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-           <Videos row={row} />
+            <Videos row={row} />
           </Collapse>
         </TableCell>
       </TableRow>

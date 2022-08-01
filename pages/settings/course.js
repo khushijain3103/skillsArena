@@ -1,10 +1,10 @@
 import React from "react";
-import { Typography } from "@mui/material";
 import Layout from "../../components/settings/components/Layout";
+import CourseComponent from "../../components/settings/@sections/course.settings";
 const CourseSettings = () => {
   return (
     <Layout>
-      <Typography variant="h4">Course Settings</Typography>
+      <CourseComponent />
     </Layout>
   );
 };

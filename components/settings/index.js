@@ -1,10 +1,10 @@
-import React from "react"; 
-import CourseSettings from "./@sections/course.settings";
+import React from "react";
 import Layout from "./components/Layout";
+import BasicSettings from "./@sections/basic.settings";
 function Settings() {
   return (
     <Layout>
-      <CourseSettings />
+      <BasicSettings />
     </Layout>
   );
 }

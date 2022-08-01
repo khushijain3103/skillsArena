@@ -1,18 +1,16 @@
 import React from "react";
-import {
-  Typography,
-  Box,
-  Button,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Typography, Box, Button, Stack, TextField } from "@mui/material";
 import Image from "next/image";
 import UPLOAD from "../../../public/assets/upload.jpg";
 const Settings = () => {
   const [image, setImage] = React.useState(UPLOAD);
-  const [save,setSave] = React.useState(false);
+  const [save, setSave] = React.useState(false);
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]; // 0th index file is the image
+    /*
+    upload to cloudinary
+
+    */
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (event) => {
@@ -92,7 +90,11 @@ const Settings = () => {
               Upload course image
             </Button>
 
-            <Button variant="contained" disabled={!save} sx={{ width: "20em", mt: 3 }}>
+            <Button
+              variant="contained"
+              disabled={!save}
+              sx={{ width: "20em", mt: 3 }}
+            >
               Save course Image
             </Button>
           </Box>
