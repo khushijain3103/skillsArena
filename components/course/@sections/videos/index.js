@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Button, styled } from "@mui/material";
 import VideoEditModal from "../video.modal.edit";
-import handlerContext from "../../context/handler.context";
+import handlerContext from "../../../../context/handler.context";
 import VideoAddModal from "../video.modal.add";
 const StyledTableCell = styled(TableCell)({
   color: "white",

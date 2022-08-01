@@ -30,7 +30,7 @@ export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
     instructor,
   });
   const keys = Object.keys(obj);
- console.log(obj)
+  console.log(obj);
   const handleChange = (e) => {
     setObj({
       ...obj,

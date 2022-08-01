@@ -16,7 +16,7 @@ function List(props) {
           </tr>
         </thead>
         <tbody>
-          {props.list.map((item,key) => (
+          {props.list.map((item, key) => (
             <tr key={key}>
               <td className="Name">{item.CourseID}</td>
               <td className="Age">{item.course}</td>

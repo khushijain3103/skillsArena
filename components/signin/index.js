@@ -1,5 +1,5 @@
 import SignInSide from "./Components/SignIn/SignIn";
-import withoutAuth from "../../HOC/withoutAuth"
+import withoutAuth from "../../HOC/withoutAuth";
 function App() {
   return (
     <div className="App">

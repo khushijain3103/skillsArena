@@ -37,11 +37,7 @@ export default function BasicModal({ open, courseId, setOpen }) {
   };
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose} 
-        id="new-video-modal"
-      >
+      <Modal open={open} onClose={handleClose} id="new-video-modal">
         <Box sx={style}>
           <Typography
             id="modal-modal-title"

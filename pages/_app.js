@@ -3,13 +3,12 @@ import "../styles/App.css";
 import "../styles/ErrorModal.css";
 import "../styles/Card.css";
 // import "../styles/Form.css";
-import "../styles/TopBar.css"; 
+import "../styles/TopBar.css";
 import "../styles/NewList.css";
 import AuthContext from "../context/auth.context";
 import { getUser } from "../api";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { Grid } from  'react-loader-spinner'
-import React,{useState} from "react";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"; // eslint-disable-line
+import React, { useState } from "react";
 import { SnackbarProvider } from "notistack";
 import Loading from "../components/Loading";
 function MyApp({ Component, pageProps }) {
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
     const fetchUser = async () => {
       const user = await getUser();
-      console.log(user);
+
       setUser(user);
       setIsLoading(false);
     };

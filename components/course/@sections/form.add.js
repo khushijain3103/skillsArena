@@ -20,12 +20,14 @@ const style = {
 
 export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
   const handleClose = () => setOpen(false);
-  const { FirstName, LastName, email, Bio } = data;
+  const { title, description, url, stars, cost, instructor } = data;
   const [obj, setObj] = React.useState({
-    FirstName,
-    LastName,
-    email,
-    Bio,
+    title,
+    description,
+    url,
+    stars,
+    cost,
+    instructor,
   });
   const keys = Object.keys(obj);
   console.log(obj);

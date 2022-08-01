@@ -1,17 +1,12 @@
-import React from 'react';
-import SideBar from './components/SideBar'
-
-function Settings()
-{
-
-    return(
-        <>
-            <SideBar/>
-            <FormPropsTextFields/>
-        </>
-
-    )
-
+import React from "react";
+import Layout from "./components/Layout";
+import BasicSettings from "./@sections/basic.settings";
+function Settings() {
+  return (
+    <Layout>
+      <BasicSettings />
+    </Layout>
+  );
 }
 
 export default Settings;

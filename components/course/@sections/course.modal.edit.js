@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
+import HandlerContext from "../../../context/handler.context";
 const style = {
   position: "absolute",
   top: "50%",
@@ -18,17 +19,17 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
+export default function BasicModal({ open, row, courseId, setOpen }) {
   const handleClose = () => setOpen(false);
-  const { FirstName, LastName, email, Bio } = data;
+  const { handleUpdate } = React.useContext(HandlerContext);
   const [obj, setObj] = React.useState({
-    FirstName,
-    LastName,
-    email,
-    Bio,
+    title: row.title,
+    url: row.url,
+    cost: row.cost,
+    instructor: row.instructor,
+    description: row.description,
   });
   const keys = Object.keys(obj);
-  console.log(obj);
   const handleChange = (e) => {
     setObj({
       ...obj,
@@ -79,7 +80,8 @@ export default function BasicModal({ handleAddcourse, open, data, setOpen }) {
             color="primary"
             sx={{ mb: 3 }}
             onClick={() => {
-              handleAddcourse(obj);
+              handleUpdate({ ...obj, videos: row.videos, courseId });
+              handleClose();
             }}
           >
             Save the edit
